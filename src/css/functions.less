@@ -1,0 +1,80 @@
+@fibonacci: ~`fib = function(n, clean){
+		var cache = [0,1,1];
+    if(cache[n] === undefined) cache[n] = fib(n-1, true) + fib(n-2, true);
+    if(clean) return cache[n];
+    else return cache[n]+'px';
+}`;
+
+@modularscale: ~`mscale = function(base, n, mathfn, ratio, clean) {
+	if(!ratio) ratio = 1.61803398875;
+	if(n==0) {
+		if(!clean) return base+px;
+		else return base;
+	}
+	var iterations = Math.abs(n);
+	for (i=0; i<iterations; i++){
+		if(n>0) {
+			base = base * ratio;
+		} else {
+			base = base / ratio;
+		}
+	}
+	if(!clean) {
+		if(mathfn) return mathfn(base)+'px';
+		else return base+'px';
+	} else {
+		if(mathfn) return mathfn(base);
+		else return base;
+	}
+}`;
+
+@joinedscale: ~`jscale = function(base1, base2, n, mathfn, ratio, clean) {
+	if(base1 == base2) return mscale(base1, n, mathfn, ratio, clean);
+	if(!ratio) ratio = 1.61803398875;
+	if(n==0) {
+		if(!clean) return base1+px;
+		else return base1;
+	}
+	var iterations = Math.abs(n);
+	var numbers = [base1, base2];
+	var i = 1;
+	if(base1<base2) var low = base1, high = base2;
+	else var low = base2, high = base1;
+	var lowmod = low, highmod = high;
+	while(i<=iterations || highmod > low || lowmod < high) {
+		lowmod = mscale(low, i, mathfn, ratio, true);
+		numbers.push(lowmod);
+		numbers.push(mscale(low, -i, mathfn, ratio, true));
+		numbers.push(mscale(high, i, mathfn, ratio, true));
+		highmod = mscale(high, -i, mathfn, ratio, true);
+		numbers.push(highmod);
+		i++;
+	};
+	if((base1<base2 && n<0) || (base1>base2 && n>0)) {
+		add = iterations+i;
+		for (i; i <= add; i++) {
+			lowmod = mscale(low, i, mathfn, ratio, true);
+			numbers.push(lowmod);
+			numbers.push(mscale(low, -i, mathfn, ratio, true));
+			numbers.push(mscale(high, i, mathfn, ratio, true));
+			highmod = mscale(high, -i, mathfn, ratio, true);
+			numbers.push(highmod);
+		};
+	}
+	numbers = numbers.sort(function(a,b) { return a - b;});
+	var start = numbers.indexOf(base1);
+	if(!clean) return numbers[start+n]+'px';
+	else return numbers[start+n];
+}`;
+
+@goldenfont: ~`jfont = function(n) {
+	switch(n) {
+		case -2: var fn = Math.floor; break;
+		case -1: var fn = Math.ceil; break;
+		case 2: var fn = Math.floor; break;
+		case 4: var fn = Math.floor; break;
+		case 6: var fn = Math.ceil; break;
+		default: var fn = Math.round; break;
+	};
+	return jscale(14, 48, n, fn);
+}`;

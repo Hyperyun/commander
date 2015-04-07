@@ -10,15 +10,17 @@
     "react": "*"
   },
   "devDependencies": {
+    "URIjs": "*",
     "async": "^0.9.0",
     "css-loader": "*",
+    "file-loader": "^0.8.1",
     "jsx-loader": "*",
     "less": "*",
     "less-loader": "*",
     "react-hot-loader": "^0.2.0",
     "style-loader": "*",
     "underscore": "*",
-    "URIjs": "*",
+    "url-loader": "^0.5.5",
     "velocity-animate": "^1.1.0",
     "webpack": "^1.3.2-beta4",
     "webpack-dev-server": "^1.4.7"

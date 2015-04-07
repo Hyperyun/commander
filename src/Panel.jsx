@@ -14,11 +14,6 @@ var JsonEditor = require('./Json.jsx');
 // Panel Definition
 var Panel = {};
 
-Panel.Logo = require("file!./img/logo.png");
-Panel.LogoXs = require("file!./img/logoxs.png");
-Panel.LogoSquare = require("file!./img/square-logo.png");
-window.test = Panel.Logo;
-
 Panel.Wrapper = React.createClass({
     render: function() {
         this.setPage = this.props.setPage;

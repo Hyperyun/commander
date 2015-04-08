@@ -23,7 +23,7 @@ module.exports = {
       { test: /\.ttf$/,    loader: "file-loader" },
       { test: /\.eot$/,    loader: "file-loader" },
       { test: /\.svg$/,    loader: "file-loader" },
-      { test: /\.jsx$/, loaders: ['react-hot', 'jsx'] },
+      { test: /\.jsx$/, loaders: ['react-hot', 'jsx-loader'] },
       { test: /\.png$/, loader: "url-loader?mimetype=image/png" }
     ]
   }

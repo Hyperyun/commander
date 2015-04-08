@@ -10,6 +10,7 @@
 
 // Requires
 var JsonEditor = require('./Json.jsx');
+var React = require('react');
 
 // Panel Definition
 var Panel = {};

@@ -7,9 +7,7 @@
  * Hyperstore:false , React: false, module: false, require: false, renderList: false,  _: false, Profile: false,
  * Router : false, Panel : false , xiupinHistory: false,
  * ResponsiveBootstrapToolkit: false*/
-
-
-
+var React = require('react');
 //     keymaster.js
 //     (c) 2011-2013 Thomas Fuchs
 //     keymaster.js may be freely distributed under the MIT license
@@ -307,26 +305,6 @@
   if(typeof module !== 'undefined') module.exports = assignKey;
 
 })(this);
-
-
-
-
-
-var Masthead;
-Masthead = React.createClass({
-  render: function() {
-    return (
-      <div className='bs-masthead'>
-        <div className="container">
-          <h1>{this.props.title}</h1>
-          <p className="lead">{this.props.children}</p>
-        </div>
-      </div>
-    );
-  }
-});
-
-var ReactTransitionGroup, StarterApp;
 
 var JsonEditor = {};
 

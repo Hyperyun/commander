@@ -168,7 +168,7 @@ Panel.Main = React.createClass ({
                     <Panel.Wrapper setPage={this.setPage}>
                     <div className={"col-xs-8 panel-main-container panel-data-null"}>
 
-                    <img src={"./src/img/square-logo.png"}></img>
+                    <img src={window.publicPath + "/img/square-logo.png"}></img>
                     <h2>Please select a collection to view. </h2>
 
 
@@ -385,9 +385,9 @@ Panel.TopBar = React.createClass ({
                 <div className={"panel-top-bar-container"}>
                 <div className={"col-xs-2 panel-top-logo"}>
                 <a href="#" onClick={this.handleClick.bind(that,'dashboard')}>
-                <img className={"panel-logo-xs visible-xs visible-sm"} src={"./src/img/logo-eng-white-xs.png"}></img>
+                <img className={"panel-logo-xs visible-xs visible-sm"} src={window.publicPath+"/img/logo-eng-white-xs.png"}></img>
                 <img className={"panel-logo visible-md visible-lg"}
-                 src={"./src/img/logo-eng-white.png"}></img>
+                 src={window.publicPath + "/img/logo-eng-white.png"}></img>
                 </a>
                 </div>
                 <div className={"panel-top-bar"}>

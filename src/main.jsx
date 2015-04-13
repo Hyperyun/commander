@@ -39,7 +39,7 @@ function initialize (hostname, app) {
 
   window.activeApp = app;
   window.selectedApp = app;
-  window.targetServer = hostname;
+  window.targetServer= hostname;
 
   Hyperstore.initialize('_hyperyun',['applications','users','collections'],{server:window.targetServer});
   Hyperstore.initialize(app);
@@ -75,25 +75,30 @@ function initialize (hostname, app) {
 var appname;
 var currentURI = URI(window.location.href);
 
-if (currentURI.domain() == "hyperyun.com") {
-  if (currentURI.subdomain()) {
-    appname = currentURI.subdomain();
-    initialize("hyperyun.com",appname);
-  }
-  else {
-    alert('Critical error - please relogin.');
-    window.location = "http://hyperyun.com/zh/login";
-  }
+if(window.targetServer && window.activeApp) {
+  initialize(window.targetServer,window.activeApp);
 }
-else if (currentURI.domain() == "localhost"){
-  currentURI.search(function(data) {
-    if (data.hostname && data.appname) {
-      initialize(data.hostname, data.appname);
-    } else {
-      connectionDialog();
+else {
+  if (currentURI.domain() == "hyperyun.com") {
+    if (currentURI.subdomain()) {
+      appname = currentURI.subdomain();
+      initialize("hyperyun.com",appname);
     }
+    else {
+      alert('Critical error - please relogin.');
+      window.location = "http://hyperyun.com/zh/login";
+    }
+  }
+  else if (currentURI.domain() == "localhost"){
+    currentURI.search(function(data) {
+      if (data.hostname && data.appname) {
+        initialize(data.hostname, data.appname);
+      } else {
+        connectionDialog();
+      }
 
-  });
+    });
+  }
 }
 
 function connectionDialog(){

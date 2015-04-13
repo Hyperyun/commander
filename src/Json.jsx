@@ -994,7 +994,7 @@ JsonEditor.JsonView = React.createClass ({
                 return(
                         <div className={"jsoneditor-loadmore"}>
                         <a href="#">
-                        <img src={"./src/img/sadface.png"}></img>
+                        <img src={window.publicPath + "/img/sadface.png"}></img>
                         This collection is empty.
                         </a>
                         </div>

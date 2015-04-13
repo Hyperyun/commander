@@ -33,6 +33,7 @@ var URI = require('URIjs');
 window.URI = require('URIjs');
 var DEBUG = true;
 
+window.publicPath = window.publicPath || "./src";
 window.disableHyperyunLogger = true;
 
 function initialize (hostname, app) {

@@ -89,7 +89,7 @@ else {
       window.location = "http://hyperyun.com/zh/login";
     }
   }
-  else if (currentURI.domain() == "localhost"){
+  else {
     currentURI.search(function(data) {
       if (data.hostname && data.appname) {
         initialize(data.hostname, data.appname);
